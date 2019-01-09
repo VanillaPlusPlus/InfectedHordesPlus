@@ -42,7 +42,7 @@ class InfectedHordesPlusSpawner
     		timeSnapshot = 0;
 
     		if(m_hordes.Count() != config.getMaxHordes()){
-    			ref InfectedHordesPlus insertHorde = new InfectedHordesPlus(config.getHordeZoneLocation(), config.getMinInfectedCount(), config.getMaxInfectedCount(), config.getZombieClasses(), config.getLootChoices(), config.getWeaponLootChoices());
+    			ref InfectedHordesPlus insertHorde = new InfectedHordesPlus(config.getHordeZoneLocation(), config.getMinInfectedCount(), config.getMaxInfectedCount(), config.getZombieClasses());
     			m_hordes.Insert(insertHorde);
     			Print("Horde has been sighted at " + insertHorde.getLocation().ToString());
     		}
