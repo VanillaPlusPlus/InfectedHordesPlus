@@ -9,8 +9,8 @@
         |_|                                   
 */
 
-#include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\ServerAddons\\InfectedHordesPlus\\InfectedHordesPlus.c"
-#include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\ServerAddons\\InfectedHordesPlus\\InfectedHordesPlusConfig.c"
+#include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\InfectedHordesPlus\\InfectedHordesPlus.c"
+#include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\InfectedHordesPlus\\InfectedHordesPlusConfig.c"
 
 
 class InfectedHordesPlusSpawner
