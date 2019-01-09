@@ -51,9 +51,9 @@ ref InfectedHordesPlusSpawner infectedHordes;
 infectedHordes = new InfectedHordesPlusSpawner();
 ```
 
-- Inside of void OnUpdate()
+- Inside of void OnUpdate(float timeslice)
 ```
-infectedHordes.onUpdate();
+infectedHordes.onUpdate(timeslice);
 ```
 
 ## Configuration:
