@@ -2,6 +2,12 @@
 A complete server side horde script for DayZ Standalone.
 
 ## Installation:
+- Before you add this mod, you must make sure that you had a profile set for your server, if not than you will not be able to configure the mod, and the mod mostlikly will not launch.
+- If you don't already have them added then add the following to your start up command:
+```
+-scrAllowFileWrite -profiles=ProfileName
+```
+
 - Download the projects zip file. [Here](https://github.com/VanillaPlusPlus/InfectedHordes/archive/master.zip)
 - Uncompress the Zip folder, and move the InfectedHordesPlus folder into the same location where init.c is located.
 
