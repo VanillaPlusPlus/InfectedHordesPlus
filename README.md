@@ -39,7 +39,7 @@ ref InfectedHordesPlusSpawner infectedHordes;
 infectedHordes = new InfectedHordesPlusSpawner();
 ```
 
--Inside of void OnUpdate()
+- Inside of void OnUpdate()
 ```
 infectedHordes.onUpdate();
 ```
