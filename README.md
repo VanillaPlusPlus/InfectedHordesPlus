@@ -2,8 +2,8 @@
 A complete server side horde script for DayZ Standalone.
 
 ## Installation:
-- Before you add this mod, you must make sure that you had a profile set for your server, if not than you will not be able to configure the mod, and the mod mostlikly will not launch.
-- If you don't already have them added then add the following to your start up command:
+- Before you add this mod, you must make sure that you had a profile set for your server, if not than you will not be able to configure the mod, and the mod will not launch correctly.
+- If you don't already have them added then add the following to your start up command while changing "ProfileName" to whatever you wish to name the profile folder:
 ```
 -scrAllowFileWrite -profiles=ProfileName
 ```
@@ -50,3 +50,5 @@ infectedHordes = new InfectedHordesPlusSpawner();
 infectedHordes.onUpdate();
 ```
 
+## Configuration:
+- Inside of your profile folder, which should be in the same folder that you set in the installation process with -profiles, open ```InfectedHordesPlus.json``` and changes it's values. Have fun.
