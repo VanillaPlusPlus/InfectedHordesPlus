@@ -18,7 +18,7 @@ A complete server side horde script for DayZ Standalone.
 - At the top of your init.c file append the following:
 
 ```c
-#include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\ServerAddons\\InfectedHordesPlus\\InfectedHordesPlusSpawner.c"
+#include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\InfectedHordesPlus\\InfectedHordesPlusSpawner.c"
 ```
 
 - Inside of your init.c you need to find your MissionServer class.
