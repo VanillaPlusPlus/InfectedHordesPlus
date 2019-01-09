@@ -1,7 +1,7 @@
 # InfectedHordesPlus
 A complete server side horde script for DayZ Standalone.
 
-# Installation:
+## Installation:
 - Download the projects zip file. [Here](https://github.com/VanillaPlusPlus/InfectedHordes/archive/master.zip)
 - Uncompress the Zip folder, and move the InfectedHordesPlus folder into the same location where init.c is located.
 
