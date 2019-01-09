@@ -14,7 +14,7 @@ class InfectedHordesPlus{
 	private ref array<Object> m_SpawnedZombieObjs;
 	private ref array<EntityAI> m_SpawnedZombieAI;
 	
-	void InfectedHordesPlus(vector zoneLocation, int maxInfected, int minInfected, ref array<string> zombieClasses, ref array<string> loot){
+	void InfectedHordesPlus(vector zoneLocation, int maxInfected, int minInfected, ref array<string> zombieClasses){
 		m_SpawnedZombieObjs = new array<Object>;
 		m_SpawnedZombieAI = new array<EntityAI>;
 		zonePos = zoneLocation;
