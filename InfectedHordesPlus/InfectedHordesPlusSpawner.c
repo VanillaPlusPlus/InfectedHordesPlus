@@ -15,54 +15,67 @@
 
 class InfectedHordesPlusSpawner
 {
-	private float timeSnapshot;
-	private float lifeTimeClock;
+    private float timeSnapshot;
+    private float lifeTimeClock;
 
-	ref array<ref InfectedHordesPlus> m_hordes;
+    ref array<ref InfectedHordesPlus> m_hordes;
 
-	ref InfectedHordesPlusConfig config;
+    ref InfectedHordesPlusConfig config;
 
 
-	void InfectedHordesPlusSpawner()
-	{
-		 config = new InfectedHordesPlusConfig();
+    void InfectedHordesPlusSpawner()
+    {
+         config = new InfectedHordesPlusConfig();
          config.load();
-		 m_hordes = new array<ref InfectedHordesPlus>;
-	}
+         m_hordes = new array<ref InfectedHordesPlus>;
+    }
 
     void Init(){
-		Print("Infected Hordes...INIT!");
+        Print("Infected Hordes...INIT!");
     }
 
     void onUpdate(float timeslice){
-    	timeSnapshot += timeslice;
-    	lifeTimeClock += timeslice;
+        timeSnapshot += timeslice;
+        lifeTimeClock += timeslice;
 
-    	if(config.getHordeSpawnTime() <= timeSnapshot){
-    		timeSnapshot = 0;
+        if(config.getHordeSpawnTime() <= timeSnapshot){
+            timeSnapshot = 0;
 
-    		if(m_hordes.Count() != config.getMaxHordes()){
-    			ref InfectedHordesPlus insertHorde = new InfectedHordesPlus(config.getHordeZoneLocation(), config.getMinInfectedCount(), config.getMaxInfectedCount(), config.getZombieClasses());
-    			m_hordes.Insert(insertHorde);
-    			Print("Horde has been sighted at " + insertHorde.getLocation().ToString());
-    		}
-    	}
+            if(m_hordes.Count() != config.getMaxHordes()){
+                vector spawnPos = config.getHordeZoneLocation();
+                if(spawnPos != "0 0 0"){
+                    ref InfectedHordesPlus insertHorde = new InfectedHordesPlus(spawnPos, config.getMinInfectedCount(), config.getMaxInfectedCount(), config.getZombieClasses(), config.canSpawnSpecialInfected());
+                    m_hordes.Insert(insertHorde);
+                    Print("Horde spawned at " + insertHorde.getLocation().ToString());
+                    
+                    if(config.shouldSendBroadcast()){
+                        GetGame().ChatPlayer(1, "Horde has been sighted at " + insertHorde.getLocation().ToString());
+                    }
+                }
+            }
+        }
 
         if(m_hordes.Count() == 0){
             lifeTimeClock = 0;
             return;
         }
 
-    	if(m_hordes.Count() != 0){
-			foreach(InfectedHordesPlus horde : m_hordes){
-				horde.addLifeTime(timeslice);
+        if(config.hasLifeTime()){
+            foreach(InfectedHordesPlus horde : m_hordes){
+                horde.addLifeTime(timeslice);
 
-				if(horde.hasLivedLife(config.getDespawnTime())){
-					Print("Horde spawned at " + horde.getLocation().ToString() + " has lived it's life and depsawned.");
-					horde.deleteHorde();
-					m_hordes.RemoveItem(horde);
-				}
-			}
-    	}
+                if(horde.hasLivedLife(config.getDespawnTime())){
+                    Print("Horde spawned at " + horde.getLocation().ToString() + " has lived it's life and depsawned.");
+                    horde.deleteHorde();
+                    m_hordes.RemoveItem(horde);
+                }
+            }
+        } else{
+            foreach(InfectedHordesPlus m_horde : m_hordes){
+                if(m_horde.canDespawn()){
+                    m_hordes.RemoveItem(m_horde);
+                }
+            }
+        }
     }
 }

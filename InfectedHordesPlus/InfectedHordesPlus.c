@@ -14,30 +14,42 @@ class InfectedHordesPlus{
 	private ref array<Object> m_SpawnedZombieObjs;
 	private ref array<EntityAI> m_SpawnedZombieAI;
 	
-	void InfectedHordesPlus(vector zoneLocation, int maxInfected, int minInfected, ref array<string> zombieClasses){
+	void InfectedHordesPlus(vector zoneLocation, int maxInfected, int minInfected, ref array<string> zombieClasses, bool canSpawnSpecial){
 		m_SpawnedZombieObjs = new array<Object>;
 		m_SpawnedZombieAI = new array<EntityAI>;
 		zonePos = zoneLocation;
 
 		for(int i = 0; i < Math.RandomIntInclusive(minInfected, maxInfected); i++){
 			vector randomLocationInZone;
-			randomLocationInZone[0] = zoneLocation[0] + Math.RandomIntInclusive(10,35);
-			randomLocationInZone[2] = zoneLocation[2] + Math.RandomIntInclusive(25,65);
+			randomLocationInZone[0] = zoneLocation[0] + Math.RandomIntInclusive(-50,50);
+			randomLocationInZone[2] = zoneLocation[2] + Math.RandomIntInclusive(-50,50);
 
 			Object obj = GetGame().CreateObject(zombieClasses.GetRandomElement(), snapToGround(randomLocationInZone), false, true);
 			m_SpawnedZombieObjs.Insert(obj);
 
-			EntityAI zombieAI;
-			if(Class.CastTo(zombieAI, obj)){
-				int skin = Math.RandomIntInclusive(0, 5);	
+			if(canSpawnSpecial){
+				EntityAI zombieAI;
+				if(Class.CastTo(zombieAI, obj)){
+					int skin = Math.RandomIntInclusive(0, 5);	
 
-				if(skin == 5){
-					zombieAI.SetObjectMaterial( 0, "DZ\\data\\data\\laser.rvmat" );
-					zombieAI.SetObjectMaterial( 1, "DZ\\data\\data\\laser.rvmat" );
-					zombieAI.SetObjectMaterial( 2, "DZ\\data\\data\\laser.rvmat" );
+					if(skin == 5){
+						zombieAI.SetObjectMaterial( 0, "DZ\\data\\data\\laser.rvmat" );
+						zombieAI.SetObjectMaterial( 1, "DZ\\data\\data\\laser.rvmat" );
+						zombieAI.SetObjectMaterial( 2, "DZ\\data\\data\\laser.rvmat" );
+					}
 				}
 			}
 		}
+	}
+
+	bool canDespawn(){
+		for(int i = 0; i < m_SpawnedZombieObjs.Count(); i++){
+			if(m_SpawnedZombieObjs.Get(i).IsAlive()){
+				return false;
+			}
+			continue;
+		}
+		return true;
 	}
 
 	vector snapToGround(vector pos)

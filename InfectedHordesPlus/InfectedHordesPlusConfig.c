@@ -17,6 +17,9 @@ class InfectedHordesPlusConfig{
 	private int INT_INFECTEDHORDE_DESPAWNTIME;
 	private int MAX_HORDES;
 
+	private bool SENDBROADCASTMESSAGE;
+	private bool CANSPAWNSPECIALINFECTED;
+
 	private ref map<string, vector> m_HordePositions;
 
 	void InfectedHordesPlusConfig(){
@@ -43,6 +46,8 @@ class InfectedHordesPlusConfig{
 		INT_INFECTEDHORDE_TIME = 10;
 		INT_INFECTEDHORDE_DESPAWNTIME = 100;
 		MAX_HORDES = 10;
+		SENDBROADCASTMESSAGE = true;
+		CANSPAWNSPECIALINFECTED = true;
 
 		m_HordePositions.Insert( "Severograd", "8428 0 12767" ); //string Name of location, vector centre position
         m_HordePositions.Insert( "Stary", "6046 0 7733" );
@@ -67,14 +72,46 @@ class InfectedHordesPlusConfig{
 	}
 
 	vector getHordeZoneLocation(){
-		int totalPossibleTowns  = m_HordePositions.Count();
-		int oRandValue = Math.RandomIntInclusive(0,totalPossibleTowns);
+		ref array<Man> players = new array<Man>;
+		GetGame().GetPlayers(players);
 
-		string TownName = m_HordePositions.GetKey(oRandValue);
-		vector TownPosition = m_HordePositions.Get(TownName);
-		return TownPosition;
+		if(players.Count() == 0){
+			return "0 0 0";
+		}
+
+		if(m_HordePositions.Count() == 0){
+			Print("Invalid positions, horde position count equals zero. Regenerate Json, or fix your typo.");
+			return "0 0 0";
+		}
+
+		for(int i = 0; i < m_HordePositions.Count() * 2; i++){
+			for(int x = 0; x < players.Count(); x){
+				vector location =  m_HordePositions.Get(m_HordePositions.GetKey(Math.RandomIntInclusive(0, m_HordePositions.Count() - 1)));
+				float distanceToZone = vector.Distance(players.Get(x).GetPosition(), location);
+						
+				if(distanceToZone > 100){
+					if(x == players.Count() - 1){
+						return location;
+					}
+					x++;
+				}
+			}
+		}
+		return "0 0 0";
+	}
+
+	bool shouldSendBroadcast(){
+		return SENDBROADCASTMESSAGE;
+	}
+
+	bool canSpawnSpecialInfected(){
+		return CANSPAWNSPECIALINFECTED;
 	}
 	
+	bool hasLifeTime(){
+		return INT_INFECTEDHORDE_DESPAWNTIME != 0;
+	}
+
 	int getHordeSpawnTime(){
 		return INT_INFECTEDHORDE_TIME;
 	}
