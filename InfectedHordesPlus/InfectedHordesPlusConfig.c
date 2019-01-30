@@ -85,15 +85,14 @@ class InfectedHordesPlusConfig{
 		}
 
 		for(int i = 0; i < m_HordePositions.Count() * 2; i++){
-			for(int x = 0; x < players.Count(); x){
-				vector location =  m_HordePositions.Get(m_HordePositions.GetKey(Math.RandomIntInclusive(0, m_HordePositions.Count() - 1)));
-				float distanceToZone = vector.Distance(players.Get(x).GetPosition(), location);
-						
-				if(distanceToZone > 100){
-					if(x == players.Count() - 1){
-						return location;
-					}
-					x++;
+			
+			foreach(Man player : players)
+			{
+				vector location = m_HordePositions.Get(m_HordePositions.GetKey(Math.RandomIntInclusive(0, m_HordePositions.Count() - 1)));
+				float distanceToZone = vector.Distance(player.GetPosition(), location);
+				if (distanceToZone <= 100)
+				{
+					return location;
 				}
 			}
 		}
