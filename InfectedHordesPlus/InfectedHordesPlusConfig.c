@@ -71,7 +71,7 @@ class InfectedHordesPlusConfig{
 		save();
 	}
 	
-	String getHordeZoneName(vector pos){
+	string getHordeZoneName(vector pos){
 		for(int index; index < m_HordePositions.Count(); index++){
 			vector location = m_HordePositions.Get(m_HordePositions.GetKey(index));
 			if(location == pos){
