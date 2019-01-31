@@ -56,16 +56,15 @@ class InfectedHordesPlus{
 		return true;
 	}
 
-	vector snapToGround(vector pos)
-    {
-        float pos_x = pos[0];
-        float pos_z = pos[2];
-        float pos_y = GetGame().SurfaceY( pos_x, pos_z );
-        vector tmp_pos = Vector( pos_x, pos_y, pos_z );
-        tmp_pos[1] = tmp_pos[1] + pos[1];
+	vector snapToGround(vector pos){
+		float pos_x = pos[0];
+		float pos_z = pos[2];
+		float pos_y = GetGame().SurfaceY( pos_x, pos_z );
+		vector tmp_pos = Vector( pos_x, pos_y, pos_z );
+		tmp_pos[1] = tmp_pos[1] + pos[1];
 
-        return tmp_pos;
-    }
+		return tmp_pos;
+    	}
 
 	void deleteHorde(){
 		foreach(Object obj : m_SpawnedZombieObjs){
