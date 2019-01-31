@@ -50,25 +50,35 @@ class InfectedHordesPlusConfig{
 		CANSPAWNSPECIALINFECTED = true;
 
 		m_HordePositions.Insert( "Severograd", "8428 0 12767" ); //string Name of location, vector centre position
-        m_HordePositions.Insert( "Stary", "6046 0 7733" );
-        m_HordePositions.Insert( "Vybor", "3784 0 8923" );
-        m_HordePositions.Insert( "NWAFS", "4540 0 9645" );
+		m_HordePositions.Insert( "Stary", "6046 0 7733" );
+		m_HordePositions.Insert( "Vybor", "3784 0 8923" );
+		m_HordePositions.Insert( "NWAFS", "4540 0 9645" );
 		m_HordePositions.Insert( "NWAFC", "4823 0 10457" );
 		m_HordePositions.Insert( "NWAFN", "4214 0 10977" );
-        m_HordePositions.Insert( "Balota Air Strip", "4467 0 2496" );
-        m_HordePositions.Insert( "Cherno City Centre", "6649 0 2710" );
-        m_HordePositions.Insert( "Cherno West", "6374 0 2361" );
-        m_HordePositions.Insert( "Cherno East", "7331 0 2850" );
-        m_HordePositions.Insert( "Elektro West", "10077 0 1988" );
-        m_HordePositions.Insert( "Elektro East", "10553 0 2313" );
-        m_HordePositions.Insert( "Berezino City Centre", "12319 0 9530" );
-        m_HordePositions.Insert( "Berezino South", "11991 0 9116" );
-        m_HordePositions.Insert( "Berezino North", "12823 0 10078" );
-        m_HordePositions.Insert( "Svetlojarsk", "13900 0 13258" );	
-        m_HordePositions.Insert( "Zelenogorsk South", "2572 0 5105" );
-        m_HordePositions.Insert( "Zelenogorsk North", "2741 0 5416" );
+		m_HordePositions.Insert( "Balota Air Strip", "4467 0 2496" );
+		m_HordePositions.Insert( "Cherno City Centre", "6649 0 2710" );
+		m_HordePositions.Insert( "Cherno West", "6374 0 2361" );
+		m_HordePositions.Insert( "Cherno East", "7331 0 2850" );
+		m_HordePositions.Insert( "Elektro West", "10077 0 1988" );
+		m_HordePositions.Insert( "Elektro East", "10553 0 2313" );
+		m_HordePositions.Insert( "Berezino City Centre", "12319 0 9530" );
+		m_HordePositions.Insert( "Berezino South", "11991 0 9116" );
+		m_HordePositions.Insert( "Berezino North", "12823 0 10078" );
+		m_HordePositions.Insert( "Svetlojarsk", "13900 0 13258" );	
+		m_HordePositions.Insert( "Zelenogorsk South", "2572 0 5105" );
+		m_HordePositions.Insert( "Zelenogorsk North", "2741 0 5416" );
 		m_HordePositions.Insert( "Novaya Petrovka", "3395 0 13013" );
 		save();
+	}
+	
+	String getHordeZoneName(vector pos){
+		for(int index; index < m_HordePositions.Count(); index++){
+			vector location = m_HordePositions.Get(m_HordePositions.GetKey(index));
+			if(location == pos){
+				return m_HordePositions.GetKey(index);
+			}
+		}
+		return "Unknwon Zone Name";
 	}
 
 	vector getHordeZoneLocation(){
