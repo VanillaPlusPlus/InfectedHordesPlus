@@ -46,10 +46,10 @@ class InfectedHordesPlusSpawner
                 if(spawnPos != "0 0 0"){
                     ref InfectedHordesPlus insertHorde = new InfectedHordesPlus(spawnPos, config.getMinInfectedCount(), config.getMaxInfectedCount(), config.getZombieClasses(), config.canSpawnSpecialInfected());
                     m_hordes.Insert(insertHorde);
-                    Print("Horde spawned at " + insertHorde.getLocation().ToString());
+                    Print("Horde spawned at " + insertHorde.getLocation().ToString() + " " + config.getHordeZoneName(spawnPos));
                     
                     if(config.shouldSendBroadcast()){
-                        GetGame().ChatPlayer(1, "Horde has been sighted at " + insertHorde.getLocation().ToString());
+                        GetGame().ChatPlayer(1, "Horde has been sighted at " + config.getHordeZoneName(spawnPos));
                     }
                 }
             }
