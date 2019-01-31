@@ -43,6 +43,10 @@ class InfectedHordesPlus{
 	}
 
 	bool canDespawn(){
+		if(m_SpawnedZombie.Objs.Count() == 0){
+			return false;	
+		}
+		
 		for(int i = 0; i < m_SpawnedZombieObjs.Count(); i++){
 			if(m_SpawnedZombieObjs.Get(i).IsAlive()){
 				return false;
