@@ -49,7 +49,7 @@ class InfectedHordesPlusSpawner
                     Print("Horde spawned at " + insertHorde.getLocation().ToString() + " " + config.getHordeZoneName(spawnPos));
                     
                     if(config.shouldSendBroadcast()){
-                        GetGame().ChatPlayer(1, "Horde has been sighted at " + config.getHordeZoneName(spawnPos));
+                        GetGame().ChatPlayer("Horde has been sighted at " + config.getHordeZoneName(spawnPos));
                     }
                 }
             }
