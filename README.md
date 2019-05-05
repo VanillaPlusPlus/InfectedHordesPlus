@@ -10,7 +10,7 @@ Check Change Log: [Here](https://github.com/VanillaPlusPlus/InfectedHordesPlus/r
 -profiles=ProfileName
 ```
 
-- Subscribe to the project from the workshop
+- Subscribe to the project from the [workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=1733084281)
 - Launch DayZ Launcher, not SA Launcher, and go to the mods tab.
 - Locate Infected Hordes Plus, right click, and click "Open Folder"
 - Copy the mod folder to your root server directory.
