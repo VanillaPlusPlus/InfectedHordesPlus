@@ -1,5 +1,5 @@
 # InfectedHordesPlus
-A complete server side horde script for DayZ Standalone.
+A packed server sided horde script for DayZ Standalone.
 
 Check Change Log: [Here](https://github.com/VanillaPlusPlus/InfectedHordesPlus/releases)
 
