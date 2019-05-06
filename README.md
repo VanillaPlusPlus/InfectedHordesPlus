@@ -5,6 +5,7 @@ Infected Hordes Plus is simply a Infected/Zombie horde spawner, which give you t
 **Notes:**
 Currently there is no custom loot; however, that is currently in the making.
 This addon is configurable completely by JSON, and I am willing to add more data into it if you ask nicely.
+
 Check Change Log: [Here](https://github.com/VanillaPlusPlus/InfectedHordesPlus/releases)
 
 ## Installation:
