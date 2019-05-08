@@ -63,5 +63,7 @@ This file provide as much information about the JSON config as possible.
     }
 }
 ```
+
 **Note:**
+
 If you forget a comma before you next position it will not work because of a incorrect syntax. If you add a comma after your last position, you also will throw an error. If you are just simply not good with json formatting: [Go here](https://jsoneditoronline.org/).
