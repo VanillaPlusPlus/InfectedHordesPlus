@@ -215,18 +215,28 @@ class HordeManager : PluginBase
 			location.GetOffsetVector(hordePosition);
 			infected = EntityAI.Cast(GetGame().CreateObject(selectedLoadout.GetName(), hordePosition, false, true));
 			
-			foreach(string str : gear)
+			if(infected == null)
 			{
-				infected.GetInventory().CreateAttachment(str);
-			}
-			
-			foreach(string item : loot)
+				Print("[HordeManager]:: AddHorde: Infected Name: " + selectedLoadout.GetName() + " is not a spawnable game object.");
+				Print("[HordeManager]:: AddHorde: Choosing a another loadout.");
+				selectedLoadout = m_HordeLoadouts.GetRandomLoadout(location.GetCategory());
+				selectedLoadout.GetGear(gear);
+				selectedLoadout.GetLoot(loot);
+			}else
 			{
-				infected.GetInventory().CreateInInventory(item);
+				foreach(string str : gear)
+				{
+					infected.GetInventory().CreateAttachment(str);
+				}
+				
+				foreach(string item : loot)
+				{
+					infected.GetInventory().CreateInInventory(item);
+				}
+
+				infected.PlaceOnSurface();
+				newHorde.AddInfected(infected);
 			}
-			
-			infected.PlaceOnSurface();
-			newHorde.AddInfected(infected);
 		}
    }
 	void SendSpawnMessage(string name)

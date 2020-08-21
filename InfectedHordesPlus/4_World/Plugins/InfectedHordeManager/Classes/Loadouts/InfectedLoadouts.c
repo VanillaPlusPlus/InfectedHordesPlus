@@ -20,8 +20,8 @@ class HordeLoadouts
 			
 			AddInfectedLoadout(HordeCategory.Military, "ZmbM_usSoldier_normal_Woodland", {"beaniehat_blue", "mountainbag_green", "ukassvest_khaki"}, {"rice", "rice", "rice", "rice", "rice"});
 			AddInfectedLoadout(HordeCategory.Military, "ZmbM_usSoldier_normal_Desert", {"beaniehat_blue", "mountainbag_green", "ukassvest_khaki"}, {"rice", "rice", "rice", "rice", "rice"});
-			AddInfectedLoadout(HordeCategory.Military, "ZmbM_Soldier", {"beaniehat_blue", "mountainbag_green", "ukassvest_khaki"}, {"rice", "rice", "rice", "rice", "rice"});
-			AddInfectedLoadout(HordeCategory.Military, "ZmbM_SoldierAlice", {"beaniehat_blue", "mountainbag_green", "ukassvest_khaki"}, {"rice", "rice", "rice", "rice", "rice"});
+			AddInfectedLoadout(HordeCategory.Military, "ZmbM_PatrolNormal_PautRev", {"beaniehat_blue", "mountainbag_green", "ukassvest_khaki"}, {"rice", "rice", "rice", "rice", "rice"});
+			AddInfectedLoadout(HordeCategory.Military, "ZmbM_SoldierNormal", {"beaniehat_blue", "mountainbag_green", "ukassvest_khaki"}, {"rice", "rice", "rice", "rice", "rice"});
 			AddInfectedLoadout(HordeCategory.FirstResponder, "ZmbF_NurseFat", {"beaniehat_blue", "mountainbag_green", "ukassvest_khaki"}, {"rice", "rice", "rice", "rice", "rice"});
 			AddInfectedLoadout(HordeCategory.FirstResponder, "ZmbM_DoctorFat", {"beaniehat_blue", "mountainbag_green", "ukassvest_khaki"}, {"rice", "rice", "rice", "rice", "rice"});
 			AddInfectedLoadout(HordeCategory.FirstResponder, "ZmbM_FirefighterNormal", {"beaniehat_blue", "mountainbag_green", "ukassvest_khaki"}, {"rice", "rice", "rice", "rice", "rice"});
