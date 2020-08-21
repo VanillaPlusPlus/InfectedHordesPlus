@@ -3,7 +3,6 @@
 Infected Hordes Plus is simply a Infected/Zombie horde spawner, which give you the ability to spawn random hordes at specific locations around the map until it reaches a max amount of active horde spawns. You can let them stay alive, and roam, or despawn after a certain time (in seconds).
 
 **Notes:**
-Currently there is no custom loot; however, that is currently in the making.
 This addon is configurable completely by JSON, and I am willing to add more data into it if you ask nicely.
 
 Check Change Log: [Here](https://github.com/VanillaPlusPlus/InfectedHordesPlus/releases)
@@ -24,10 +23,5 @@ Check Change Log: [Here](https://github.com/VanillaPlusPlus/InfectedHordesPlus/r
 ```
 -mod=@InfectedHordesPlus
 ```
-
-## Configuration:
-- Inside of your profile folder, which should be in the same folder that you set in the installation process with -profiles, open ```InfectedHordesPlus.json``` and changes it's values. The names are self explainitory. If you need any help please join our [discord](https://discord.gg/bkf3u7M).
-Have fun.
-
 
 **Note: If you set lifetime to 0 inside of the json file, hordes will not despawn with a time; however, they will be removed as a valid "horde" when all horde members are killed off, dead bodies are despawned with normal despawn timer. This allows hordes to stick around to get to know the players. ;D**
