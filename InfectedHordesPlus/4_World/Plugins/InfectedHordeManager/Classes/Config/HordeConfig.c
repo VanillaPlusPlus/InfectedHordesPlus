@@ -53,8 +53,8 @@ class HordeSettings
 
 	void HordeSettings()
 	{
-		m_SpawnTime = 30;
-		m_DespawnTime = 50;
+		m_SpawnTime = 300;
+		m_DespawnTime = 600;
 		m_MinInfectedCount = 1;
 		m_MaxInfectedCount = 10;
 		m_CanDeleteHordeOnDespawn = 1;

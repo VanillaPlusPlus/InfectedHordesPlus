@@ -1,10 +1,12 @@
 class HordeManager : PluginBase
 {
-   private ref Timer m_Timer;
+    private ref Timer m_Timer;
 	private ref Timer m_DespawnTimer;
 	
-   private ref HordeConfig m_Config;
-   private ref HordeLoadouts m_HordeLoadouts;
+	private bool hasInit = false;
+	
+    private ref HordeConfig m_Config;
+    private ref HordeLoadouts m_HordeLoadouts;
 	private ref array<ref InfectedHorde> m_Hordes;
 
    void HordeManager()
@@ -24,19 +26,23 @@ class HordeManager : PluginBase
    void ~HordeManager()
    {
       delete m_Timer;
-		delete m_DespawnTimer;
+      delete m_DespawnTimer;
       delete m_Config;
-		delete m_HordeLoadouts;
-		delete m_Hordes;
+	  delete m_HordeLoadouts;
+	  delete m_Hordes;
    }
 
    override void OnInit()
    {
 		m_Timer.Run(m_Config.GetSpawnTimeLength(), this, "AddHorde", null, true);
+		hasInit = true;
    }
 	
 	override void OnUpdate(float delta_time)
 	{
+		if(!hasInit) return;
+		
+		
 		if(m_Config.GetMaxHordes() == m_Hordes.Count())
 		{
 			if(!m_Timer.IsRunning()) return;
@@ -234,7 +240,7 @@ class HordeManager : PluginBase
 				msg = msg + " at " + name;
 			}
 			
-			NotificationSystem.SendNotificationToPlayerIdentityExtended(null, 5, "Infected Horde", msg);
+			NotificationSystem.SendNotificationToPlayerIdentityExtended(null, 5, "Infected Horde", msg, "set:ccgui_enforce image:Icon40Emergency");
 		}
 	}
 	void SendDespawnMessage(string name)
@@ -246,7 +252,7 @@ class HordeManager : PluginBase
 			{
 				despawnMessage = despawnMessage + " at " + name;
 			}
-				NotificationSystem.SendNotificationToPlayerIdentityExtended(null, 5, "Infected Horde", despawnMessage);
+			NotificationSystem.SendNotificationToPlayerIdentityExtended(null, 5, "Infected Horde", despawnMessage, "set:ccgui_enforce image:Icon40Emergency");
 		}
 	}
 }

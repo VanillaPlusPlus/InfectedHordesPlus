@@ -1,14 +1,14 @@
 class InfectedHorde
 {
-   private vector m_Position;
+    private vector m_Position;
 	private bool m_CanDelete;
 	private bool m_DeleteOnlyAlive;
-   private ref array<ref EntityAI> m_Infected;
+	private ref array<ref EntityAI> m_Infected;
 
    void InfectedHorde(vector pos, bool canDelete, bool deleteAlive)
    {
-      m_Position = pos;
-      m_Infected = new array<ref EntityAI>;
+		m_Position = pos;
+		m_Infected = new array<ref EntityAI>;
 		m_CanDelete = canDelete;
 		m_DeleteOnlyAlive = deleteAlive;
    }
